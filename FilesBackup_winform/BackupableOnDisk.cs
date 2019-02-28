@@ -7,6 +7,11 @@ namespace FilesBackup_winform.Backupable
         protected String path = "";
         protected String name = "";
 
+
+        /**
+         * path 待备份对象的路径，注意目录用 \\ 分隔
+         * 
+         **/
         public BackupableOnDisk(String path)
         {
             this.path= path;
