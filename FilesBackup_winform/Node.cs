@@ -9,8 +9,8 @@ namespace FilesBackup_winform.Tree
     public class Node<T>
     {
 
-        private List<Node<T>> children = new List<Node<T>>();
-        private T content;
+        protected List<Node<T>> children = new List<Node<T>>();
+        protected T content;
 
         public  Node(T content){
             this.content = content;
@@ -26,7 +26,7 @@ namespace FilesBackup_winform.Tree
             return content;
         }
 
-        public List<Node<T>> GetChildren()
+        virtual public List<Node<T>> GetChildren()
         {
             return children;
         }
