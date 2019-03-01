@@ -1,37 +1,32 @@
 ﻿using System;
+using System.IO;
 
 namespace FilesBackup_winform.Backupable
 {
     abstract public class BackupableOnDisk : IBackupable 
     {
-        protected String path = "";
-        protected String name = "";
+        protected FileSystemInfo info = null;
 
 
-        /**
-         * path 待备份对象的路径，注意目录用 \\ 分隔
-         * 
-         **/
-        public BackupableOnDisk(String path)
+        public BackupableOnDisk(FileSystemInfo info)
         {
-            this.path= path;
-            name = path.Substring(path.LastIndexOf("\\")+1);
+            this.info = info;
         }
 
-
-        public void SetPath(String path)
-        {
-            this.path = path;
-        }
-
-        public void SetName(String name)
-        {
-            this.name = name;
-        }
 
         public String GetName()
         {
-            return name;
+            return info.Name;
+        }
+
+        public DateTime GetLastWriteTime()
+        {
+            return info.LastWriteTime;
+        }
+
+        public bool IsExist()
+        {
+            return info.Exists;
         }
 
         abstract public void MakeBackup(string destDirPath);

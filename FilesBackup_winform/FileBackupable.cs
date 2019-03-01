@@ -4,8 +4,14 @@ namespace FilesBackup_winform.Backupable
 {
     public class FileBackupable : BackupableOnDisk
     {
-        public FileBackupable(string path) : base(path)
+
+        /**
+         * 根据文件的路径生成文件描述信息，存到成员变量info中
+         * 
+         **/
+        public FileBackupable(string path) : base(new FileInfo(path))
         {
+
         }
 
         /**
@@ -16,7 +22,7 @@ namespace FilesBackup_winform.Backupable
         */
         public override void MakeBackup(string destDirPath)
         {
-            File.Copy(base.path, destDirPath + "\\" + base.name);
+            File.Copy(info.FullName, destDirPath + "\\" + info.Name);
         }
 
         /**
@@ -28,7 +34,7 @@ namespace FilesBackup_winform.Backupable
          */
         public override void MakeBackup(string destDirPath, string backupName)
         {
-            File.Copy(base.path, destDirPath);
+            File.Copy(info.FullName, destDirPath);
         }
     }
 }

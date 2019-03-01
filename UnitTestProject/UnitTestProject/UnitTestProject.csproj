@@ -48,6 +48,8 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MockTrieInit.cs" />
+    <Compile Include="MockTrieMakeBackupTo.cs" />
     <Compile Include="TestBackup.cs" />
     <Compile Include="TestDirectoryTrie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,21 +9,21 @@ namespace FilesBackup_winform.Backupable
         public class TrieNode
         {
             private List<TrieNode> children = new List<TrieNode>();
-            private BackupableOnDisk content = null;
+            private BackupableOnDisk value = null;
 
             public TrieNode(BackupableOnDisk content)
             {
-                this.content = content;
+                this.value = content;
             }
 
-            public String GetKey()
+            public string GetKey()
             {
-                return content.GetName();
+                return value.GetName();
             }
 
-            public BackupableOnDisk GetContent()
+            public BackupableOnDisk GetValue()
             {
-                return content;
+                return value;
             }
 
             public List<TrieNode> GetChildren()
@@ -37,14 +37,27 @@ namespace FilesBackup_winform.Backupable
             }
         }
 
-        TrieNode root = null;
+        protected TrieNode root = null;
 
         /**
          * 根据指定目录作为根目录，生成一棵Trie
          * 
-         * dirPath 指定
+         * dirPath 指定根目录路径
          */
         public DirectoryTrieBackupable(String dirPath)
+        {
+
+        }
+
+
+        /**
+         * 
+         * 根据指定目录作为目标目录，备份该Trie
+         * 
+         * destDir 目标目录路径
+         * 
+         **/
+        virtual public void MakeBackupTo(String destDir)
         {
 
         }
