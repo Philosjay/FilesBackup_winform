@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DirectoryTrieBackupable.cs" />
+    <Compile Include="BackupController.cs" />
+    <Compile Include="BackupRecordManager.cs" />
+    <Compile Include="DirectoryTreeBackupable.cs" />
     <Compile Include="IBackupable.cs" />
     <Compile Include="BackupableOnDisk.cs" />
     <Compile Include="FolderBackupable.cs" />

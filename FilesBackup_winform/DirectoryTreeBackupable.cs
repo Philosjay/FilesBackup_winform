@@ -13,7 +13,7 @@ namespace FilesBackup_winform.Backupable
 
             public Node(BackupableOnDisk content)
             {
-                this.value = content;
+                value = content;
             }
 
             public string GetKey()
