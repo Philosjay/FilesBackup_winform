@@ -11,7 +11,7 @@ namespace UnitTestProject
         {
         }
 
-        public override void MakeBackupTo(string destDir)
+        public override void MakeFullBackup(string destDir)
         {
             String rootDir = destDir + "\\root";
             String folder1 = rootDir + "\\" + "folder1";

@@ -4,14 +4,14 @@ using System.Collections.Generic;
 namespace FilesBackup_winform.Backupable
 {
 
-    public class DirectoryTrieBackupable
+    public class DirectoryTreeBackupable
     {
-        public class TrieNode
+        public class Node
         {
-            private List<TrieNode> children = new List<TrieNode>();
+            private List<Node> children = new List<Node>();
             private BackupableOnDisk value = null;
 
-            public TrieNode(BackupableOnDisk content)
+            public Node(BackupableOnDisk content)
             {
                 this.value = content;
             }
@@ -26,25 +26,25 @@ namespace FilesBackup_winform.Backupable
                 return value;
             }
 
-            public List<TrieNode> GetChildren()
+            public List<Node> GetChildren()
             {
                 return children;
             }
 
-            public void AddChild(TrieNode newChild)
+            public void AddChild(Node newChild)
             {
                 children.Add(newChild);
             }
         }
 
-        protected TrieNode root = null;
+        protected Node root = null;
 
         /**
          * 根据指定目录作为根目录，生成一棵Trie
          * 
          * dirPath 指定根目录路径
          */
-        public DirectoryTrieBackupable(String dirPath)
+        public DirectoryTreeBackupable(String dirPath)
         {
 
         }
@@ -52,17 +52,30 @@ namespace FilesBackup_winform.Backupable
 
         /**
          * 
-         * 根据指定目录作为目标目录，备份该Trie
+         * 根据指定目录作为目标目录，采用完全备份方式备份该Trie
          * 
          * destDir 目标目录路径
          * 
          **/
-        virtual public void MakeBackupTo(String destDir)
+        virtual public void MakeFullBackup(String destDir)
         {
 
         }
 
-        public TrieNode GetRoot()
+        /**
+         * 
+         * 根据指定目录作为目标目录，采用增量备份方式备份该Trie
+         * 
+         * destDir      目标目录路径
+         * lastRecord   上次备份的情况
+         * 
+         **/
+        virtual public void MakeIncrementalBackup(String destDir, DirectoryTreeBackupable lastRecord)
+        {
+
+        }
+
+        public Node GetRoot()
         {
             return root;
         }

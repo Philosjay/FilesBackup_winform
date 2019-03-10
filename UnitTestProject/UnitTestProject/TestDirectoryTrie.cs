@@ -19,9 +19,9 @@ namespace UnitTestProject
             String folder1 = rootDir + "\\" + "folder1";
             String file0 = rootDir + "\\" + "file0.txt";
 
-            DirectoryTrieBackupable.TrieNode rootNode = new DirectoryTrieBackupable.TrieNode(new FolderBackupable(rootDir));
-            rootNode.AddChild(new DirectoryTrieBackupable.TrieNode(new FolderBackupable(folder1)));
-            rootNode.AddChild(new DirectoryTrieBackupable.TrieNode(new FileBackupable(file0)));
+            DirectoryTreeBackupable.Node rootNode = new DirectoryTreeBackupable.Node(new FolderBackupable(rootDir));
+            rootNode.AddChild(new DirectoryTreeBackupable.Node(new FolderBackupable(folder1)));
+            rootNode.AddChild(new DirectoryTreeBackupable.Node(new FileBackupable(file0)));
 
 
             // run test
@@ -89,19 +89,19 @@ namespace UnitTestProject
              * 将MockTrieInit 替换为DirectoryTrieBackupable 即可进行真实测试
              * 
              **/
-            DirectoryTrieBackupable trie = new MockTrieInit(rootDir);
-            DirectoryTrieBackupable.TrieNode root = trie.GetRoot();
+            DirectoryTreeBackupable trie = new MockTrieInit(rootDir);
+            DirectoryTreeBackupable.Node root = trie.GetRoot();
             BackupableOnDisk rootContent = root.GetValue();
 
             Assert.AreEqual(rootContent.GetName(), rootDir);
             Assert.IsTrue(rootContent.IsExist());
-            List<DirectoryTrieBackupable.TrieNode> rootChildren = root.GetChildren();
+            List<DirectoryTreeBackupable.Node> rootChildren = root.GetChildren();
             Assert.AreEqual(rootChildren.Count, 3);
 
             List<String> rootChildKey = new List<string>();
-            DirectoryTrieBackupable.TrieNode folder1Node = null;
-            DirectoryTrieBackupable.TrieNode folder2Node = null;
-            DirectoryTrieBackupable.TrieNode file0Node = null;
+            DirectoryTreeBackupable.Node folder1Node = null;
+            DirectoryTreeBackupable.Node folder2Node = null;
+            DirectoryTreeBackupable.Node file0Node = null;
             for (int i = 0; i < 3; i++)
             {
                 rootChildKey.Add(rootChildren[i].GetKey());
@@ -163,8 +163,8 @@ namespace UnitTestProject
              * MockTrieMakeBackupTo 替换为DirectoryTrieBackupable 即可进行真实测试
              * 
              **/
-            DirectoryTrieBackupable trie = new MockTrieMakeBackupTo(rootDir);
-            trie.MakeBackupTo(backupDir);
+            DirectoryTreeBackupable trie = new MockTrieMakeBackupTo(rootDir);
+            trie.MakeFullBackup(backupDir);
 
 
 
